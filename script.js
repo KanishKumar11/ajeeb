@@ -8,9 +8,14 @@ function readOut(message) {
   console.log("speaking");
 }
 
-window.addEventListener('load', (event) => {
-  readOut("Hello")
-});
+// Intro on page
+// window.addEventListener('load', (event) => {
+//   readOut("Hello")
+// });
+
+window.onload = function () {
+  readOut("Hello");
+}
 
 // audio input from user
 const texts = document.querySelector('.texts');
