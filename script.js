@@ -1,3 +1,4 @@
+// audio input from user
 const texts = document.querySelector('.texts');
 
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -49,3 +50,18 @@ recognition.addEventListener('end', ()=>{
 })
 
 recognition.start();
+
+// Ajeeb Speech
+function readOut(message){
+  const speech = new SpeechSynthesisUtterance()
+  speech.text = message;
+  speech.volume = 1;
+  window.speechSynthesis.speak(speech);
+  console.log("speaking");
+}
+
+window.addEventListener('load', (event) => {
+  readOut("Hello")
+});
+
+
