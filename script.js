@@ -2,7 +2,7 @@
 function readOut(message){
   const speech = new SpeechSynthesisUtterance()
   speech.text = message;
-  speech.voice = allVoices[15];
+  // speech.voice = allVoices[15];
   speech.volume = 1;
   window.speechSynthesis.speak(speech);
   console.log("speaking");
