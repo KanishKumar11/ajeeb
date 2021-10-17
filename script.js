@@ -1,5 +1,5 @@
 // Ajeeb Speech - This is How Ajeeb will speak
-function readOut(message){
+function readOut(message) {
   const speech = new SpeechSynthesisUtterance()
   speech.text = message;
   // speech.voice = allVoices[15];
@@ -9,8 +9,9 @@ function readOut(message){
 }
 
 window.addEventListener('load', (event) => {
-  readOut("नमस्ते / Hello")
+  readOut("Hello")
 });
+
 // audio input from user
 const texts = document.querySelector('.texts');
 
@@ -31,34 +32,35 @@ recognition.addEventListener('result', (e) => {
   p.innerText = text;
   texts.appendChild(p);
 
-if(e.results[0].isFinal){
-  if(text.includes('hello')){
+  if (e.results[0].isFinal) {
+    if (text.includes('hello')) {
+      p = document.createElement('p');
+      p.classList.add('reply');
+      p.innerText = 'Hi';
+      texts.appendChild(p);
+    }
+    if (text.includes('your name') || text.includes("What's your name") || text.includes("What is your name")) {
+      p = document.createElement('p');
+      p.classList.add('reply');
+      p.innerText = 'My Name is Ajeeb';
+      texts.appendChild(p);
+    }
+    if (text.includes('open YouTube')) {
+      p = document.createElement('p');
+      p.classList.add('reply');
+      p.innerText = 'Openning YouTube';
+      readOut("Openning YouTube")
+      texts.appendChild(p);
+      window.open('https://www.youtube.com/keenkanish/')
+    }
     p = document.createElement('p');
-    p.classList.add('reply');
-    p.innerText = 'Hi';
-    texts.appendChild(p);
   }
-  if(text.includes('your name') || text.includes("What's your name") || text.includes("What is your name")){
-    p = document.createElement('p');
-    p.classList.add('reply');
-    p.innerText = 'My Name is Ajeeb';
-    texts.appendChild(p);
-  }
-  if(text.includes('open YouTube')){
-    p = document.createElement('p');
-    p.classList.add('reply');
-    p.innerText = 'Openning YouTube';
-    texts.appendChild(p);
-    window.open('https://www.youtube.com/keenkanish/')
-  }
-  p = document.createElement('p');
-}
 
   console.log(text);
 
 })
 
-recognition.addEventListener('end', ()=>{
+recognition.addEventListener('end', () => {
   recognition.start();
 })
 
